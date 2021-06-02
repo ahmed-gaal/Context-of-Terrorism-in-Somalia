@@ -6,7 +6,7 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from app import server
 from app import app
-from apps import home, explore
+from apps import home
 from dash.dependencies import Input, Output, State
 
 # building the navigation bar
@@ -91,9 +91,9 @@ app.layout = html.Div([
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
 def display_page(pathname):
-    if pathname == '/explore':
-        return explore.layout
-    else:
+    #if pathname == '/explore':
+    #    return explore.layout
+    #else:
         return home.layout
 
 if __name__ == "__main__":
