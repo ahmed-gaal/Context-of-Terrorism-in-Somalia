@@ -1,3 +1,6 @@
+"""
+Utility methods script for notebooks
+"""
 import ppscore as pps
 import pandas as pd
 import numpy as np
