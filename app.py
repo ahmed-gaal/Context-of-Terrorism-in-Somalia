@@ -17,3 +17,4 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets, meta_tags=[
 server = app.server
 # Application Title
 app.title = 'Capstone Project'
+app.config.suppress_callback_exceptions=True
