@@ -11,7 +11,8 @@ layout = html.Div([
                 'font-family': 'Overpass, sans-serif',
                 'font-size': '450%', 'font-weight': 'bold',
                 'font-variant': 'small-caps'
-            },className='text-center'), className='mb-5 mt-5')
+            },className='text-center'), className='mb-5 mt-5',
+            width=12, xs=6, sm=6, md=6)
         ]),
         html.Hr(),
         dbc.Row([
