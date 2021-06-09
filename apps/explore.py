@@ -2,6 +2,7 @@
 Data exploration script
 """
 import os
+from typing import Container
 import cufflinks
 import pandas as pd
 import notebooks.utils as ut
@@ -14,7 +15,7 @@ from app import app
 
 
 df = pd.read_csv('notebooks/som.csv')
-df['Month'] = pd.DatetimeIndex(df['month']).month_name()
+df['Month'] = pd.DatetimeIndex(df['Date']).month_name()
 
 cols = ['Target Name', 'Weapon Name', 'Attack Name']
 num_cols = ['Property Value', 'Fatalities', 'Offender Fatalities',
@@ -22,6 +23,7 @@ num_cols = ['Property Value', 'Fatalities', 'Offender Fatalities',
 state = df['State'].unique()
 attack_type = df['Attack Name'].unique()
 available_columns = df.columns
+months = df['Month'].unique()
 target_type = df['Target Name'].unique()
 weapon_type = df['Weapon Name'].unique()
 indics = df.loc[:, cols]
@@ -40,135 +42,124 @@ def slice_df(df, element, item):
 
 
 layout = html.Div([
-    dbc.Row([
-        dbc.Col(
-            html.Div([
+    dbc.Container([
+        dbc.Row([
+            dbc.Col(
                 html.Div([
-                    dcc.Dropdown(
-                        id='xaxis-column',
-                        options=[{
-                            'label': i, 'value': i
-                        } for i in attack_type],
-                        value='Assassination'
-                    ),
-                    dcc.RadioItems(
-                        id='xaxis-type',
-                        labelStyle={'display': 'inline-block'}
-                    )
-                ], style={
-                    'width': '48%', 'display': 'inline-block',
-                    'color': 'black'
-                }),
-                html.Div([
-                    dcc.Dropdown(
-                        id='yaxis-column',
-                        options=[{
-                            'label': i, 'value': i
-                        } for i in state],
-                        value='Banaadir'
-                    ),
-                    dcc.RadioItems(
-                        id='yaxis-type',
-                        labelStyle={'display': 'inline-block'}
-                    )
-                ], style={
-                    'width': '48%', 'display': 'inline-block',
-                    'color': 'black'
-                }),
+                    html.Div([
+                        dcc.Dropdown(
+                            id='xaxis-column2',
+                            options=[{
+                                'label': i, 'value': i
+                            } for i in state],
+                            value='Banaadir'
+                        ),
+                        dcc.RadioItems(
+                            id='xaxis-type2',
+                            labelStyle={'display': 'inline-block'}
+                        )
+                    ], style={
+                        'width': '48%', 'display': 'inline-block',
+                        'color': 'black'
+                    }),
 
+                    dcc.Graph(
+                        id='bar-plot',
+                        responsive=True,
+                        config={
+                            'displaylogo': False,
+                            'showTips': True
+                        }
+                    )
+                ], style = {
+                    'font-variant': 'small-caps', 'font-weight': 'bold'
+                }), width=6, xs=12, sm=12, md=6
+            ),
+            dbc.Col(
+                html.Div([
+                    html.Div([
+                        dcc.Dropdown(
+                            id='xaxis-column3',
+                            options=[{
+                                'label': i, 'value': i
+                            } for i in state],
+                            value='Banaadir'
+                        ),
+                        dcc.RadioItems(
+                            id='xaxis-type3',
+                            labelStyle={'display': 'inline-block'}
+                        )
+                    ], style={
+                        'width': '48%', 'display': 'inline-block',
+                        'color': 'black'
+                    }),
                 dcc.Graph(
-                    id='map-graph',
+                    id='pie-chart',
                     responsive=True,
                     config={
-                        'displaylogo': False,
                         'showTips': True,
-                        'scrollZoom': False
+                        'displaylogo': False
                     }
                 )
-            ], style = {
-                'font-variant': 'small-caps', 'font-weight': 'bold'
-            }), width=12, xs=12, sm=12, md=12
-        )
-    ], className='row'),
-    html.Hr(),
-    dbc.Row([
-        dbc.Col(
-            html.Div([
-                html.Div([
-                    dcc.Dropdown(
-                        id='xaxis-column2',
-                        options=[{
-                            'label': i, 'value': i
-                        } for i in indics],
-                        value='Target Name'
-                    ),
-                    dcc.RadioItems(
-                        id='xaxis-type2',
-                        labelStyle={'display': 'inline-block'}
-                    )
-                ], style={
-                    'width': '48%', 'display': 'inline-block',
-                    'color': 'black'
-                }),
-                html.Div([
-                    dcc.Dropdown(
-                        id='yaxis-column2',
-                        options=[{
-                            'label': i, 'value': i
-                        } for i in cardinal],
-                        value='Wounded'
-                    ),
-                    dcc.RadioItems(
-                        id='yaxis-type2',
-                        labelStyle={'display': 'inline-block'}
-                    )
-                ], style={
-                    'width': '48%', 'display': 'inline-block',
-                    'color': 'black'
-                }),
-
-                dcc.Graph(
-                    id='bar-plot',
-                    responsive=True,
-                    config={
-                        'displaylogo': False,
-                        'showTips': True
-                    }
-                )
-            ], style = {
-                'font-variant': 'small-caps', 'font-weight': 'bold'
-            }), width=6, xs=12, sm=12, md=6
-        ),
-        dbc.Col(
-            html.Div([
-                html.Div([
-                    dcc.Dropdown(
-                        id='xaxis-column3',
-                        options=[{
-                            'label': i, 'value': i
-                        } for i in available_columns],
-                        value='Banaadir'
-                    ),
-                    dcc.RadioItems(
-                        id='xaxis-type3',
-                        labelStyle={'display': 'inline-block'}
-                    )
-                ], style={
-                    'width': '48%', 'display': 'inline-block',
-                    'color': 'black'
-                }),
-            dcc.Graph(
-                id='pie-chart',
-                responsive=True,
-                config={
-                    'showTips': True,
-                    'displaylogo': False
-                }
+                ], style = {
+                    'font-variant': 'small-caps', 'font-weight': 'bold'
+                }), width=6, xs=12, sm=12, md=6
             )
-            ], style = {
-                'font-variant': 'small-caps', 'font-weight': 'bold'
-            }), width=6, xs=12, sm=12, md=6
-        )
+        ])
+    ]),
+    html.Hr(),
+    dbc.Container([
+        dbc.Row([
+            dbc.Col(
+                html.Div([
+                    html.Div([
+                        dcc.Dropdown(
+                            id='xaxis-column',
+                            options=[{
+                                'label': i, 'value': i
+                            } for i in attack_type],
+                            value='Assassination'
+                        ),
+                        dcc.RadioItems(
+                            id='xaxis-type',
+                            labelStyle={'display': 'inline-block'}
+                        )
+                    ], style={
+                        'width': '48%', 'display': 'inline-block',
+                        'color': 'black'
+                    }),
+                    html.Div([
+                        dcc.Dropdown(
+                            id='yaxis-column',
+                            options=[{
+                                'label': i, 'value': i
+                            } for i in state],
+                            value='Banaadir'
+                        ),
+                        dcc.RadioItems(
+                            id='yaxis-type',
+                            labelStyle={'display': 'inline-block'}
+                        )
+                    ], style={
+                        'width': '48%', 'display': 'inline-block',
+                        'color': 'black'
+                    }),
+
+                    dcc.Graph(
+                        id='map-graph',
+                        responsive=True,
+                        config={
+                            'displaylogo': False,
+                            'showTips': True,
+                            'scrollZoom': False
+                        }
+                    )
+                ], style = {
+                    'font-variant': 'small-caps', 'font-weight': 'bold'
+                }), width=12, xs=12, sm=12, md=12
+            )
+    ], className='row'),
+
     ])
 ])
 
@@ -191,17 +182,14 @@ def update_graph(xaxis_column, yaxis_column, xaxis_type):
 @app.callback(
     Output('bar-plot', 'figure'),
     Input('xaxis-column2', 'value'),
-    Input('xaxis-type2', 'value'),
-    Input('yaxis-column2', 'value')
+    Input('xaxis-type2', 'value')
 )
-def update_graph(xaxis_column, yaxis_column, xaxis_type):
-    dff = df[df['State'] == yaxis_column]
-    clr = ['#54408c']
-    fig = dff.iplot(
-        asFigure=True, kind='barh', x='State', barmode='overlay',
-        y=yaxis_column, yTitle='Amount in USD', colors=clr,
-        interpolation='spline', subplots=True, subplot_titles=True,
-        theme='white', gridcolor='white'
+def update_graph(xaxis_column, xaxis_type):
+    df1 = df[df['State'] == xaxis_column]
+    fig = df1.iplot(
+        asFigure=True, kind='scatter', mode='lines', x='Date',
+        y=['Target Name', 'Attack Name', 'Weapon Name'],
+        theme='polar', interpolation='spline'
     )
     fig.update_layout(margin={'l': 40, 'b': 40, 't': 40, 'r': 40})
 
