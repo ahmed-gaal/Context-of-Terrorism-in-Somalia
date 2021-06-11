@@ -281,6 +281,8 @@ layout = html.Div([
     Input('yaxis-column3', 'value'),
     Input('xaxis-type3', 'value')
 )
+
+
 def update_graph(xaxis_column, yaxis_column, xaxis_type):
     dff = df[df['State'] == yaxis_column]
     dff = dff[dff['Weapon Name'] == xaxis_column]
@@ -297,12 +299,16 @@ def update_graph(xaxis_column, yaxis_column, xaxis_type):
                             color_discrete_sequence=color_scale)
     
     return fig
+
+
 @app.callback(
     Output('bar-plot', 'figure'),
     Input('xaxis-column1', 'value'),
     Input('yaxis-column1', 'value'),
     Input('xaxis-type1', 'value')
 )
+
+
 def update_graph(xaxis_column, yaxis_column, xaxis_type):
     df1 = df[df['State'] == xaxis_column]
     df1 = df1[df1['Target Name'] == yaxis_column]
@@ -315,11 +321,15 @@ def update_graph(xaxis_column, yaxis_column, xaxis_type):
     fig.update_layout(margin={'l': 40, 'b': 40, 't': 40, 'r': 40})
 
     return fig
+
+
 @app.callback(
     Output('pie-chart', 'figure'),
     Input('xaxis-column2', 'value'),
     Input('yaxis-column2', 'value'),
     Input('xaxis-type2', 'value'))
+
+
 def update_graph_two(xaxis_column, yaxis_column, xaxis_type):
     dts = df[df['State'] == xaxis_column]
     fig = dts.iplot(
@@ -331,11 +341,15 @@ def update_graph_two(xaxis_column, yaxis_column, xaxis_type):
     fig.update_layout(margin={'l': 40, 'b': 40, 't': 40, 'r': 40})
     
     return fig
+
+
 @app.callback(
     Output('gname-graph', 'figure'),
     Input('xaxis-column4', 'value'),
     Input('xaxis-type4', 'value')
 )
+
+
 def gname_graph(xaxis_column, xaxis_type):
     df1 = df[df['Weapon Name'] == xaxis_column]
     fig = df1.iplot(
@@ -346,11 +360,15 @@ def gname_graph(xaxis_column, xaxis_type):
     )
     fig.update_layout(margin={'l': 40, 'b': 40, 't': 40, 'r': 40})
     return fig
+
+
 @app.callback(
     Output('pie-chart2', 'figure'),
     Input('xaxis-column5', 'value'),
     Input('xaxis-type5', 'value')
 )
+
+
 def pie_chart(xaxis_column, xaxis_type):
     dff = df[df['Group Name'] == xaxis_column]
     dff1 = pd.DataFrame(
@@ -363,3 +381,4 @@ def pie_chart(xaxis_column, xaxis_type):
     )
     fig.update_layout(margin={'l': 40, 'b': 40, 'r': 40, 't': 40})
     return fig
+
