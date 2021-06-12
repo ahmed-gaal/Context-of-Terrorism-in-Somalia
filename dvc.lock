@@ -19,43 +19,43 @@ stages:
       size: 559776
       nfiles: 2
     - path: src/extract_features.py
-      md5: 25561af3668992b915fecedc3cc7e7a3
-      size: 1354
+      md5: 96944c916d08377a728b9f45a8e1247d
+      size: 1589
     outs:
     - path: som_assets/som_features
-      md5: 21571ad02e3df16343de05a377ec96a1.dir
-      size: 189782
+      md5: e2c393bf97a290112e005556437f877d.dir
+      size: 1679704
       nfiles: 4
   model training:
     cmd: python src/train_model.py
     deps:
     - path: som_assets/som_features
-      md5: 21571ad02e3df16343de05a377ec96a1.dir
-      size: 189782
+      md5: e2c393bf97a290112e005556437f877d.dir
+      size: 1679704
       nfiles: 4
     - path: src/train_model.py
-      md5: 63816ef19e739c8611629a84173fc10c
-      size: 690
+      md5: 24fb90b4a67455577662a79a3e44a736
+      size: 656
     outs:
     - path: som_assets/som_models
-      md5: 0fa68b98f9ca7852d1579ea0988be760.dir
-      size: 798
+      md5: 32714f84f7143aff887652f120a7c7c3.dir
+      size: 80376
       nfiles: 1
   model evaluation:
     cmd: python src/evaluate_model.py
     deps:
     - path: som_assets/som_features
-      md5: 21571ad02e3df16343de05a377ec96a1.dir
-      size: 189782
+      md5: e2c393bf97a290112e005556437f877d.dir
+      size: 1679704
       nfiles: 4
     - path: som_assets/som_models
-      md5: 0fa68b98f9ca7852d1579ea0988be760.dir
-      size: 798
+      md5: 32714f84f7143aff887652f120a7c7c3.dir
+      size: 80376
       nfiles: 1
     - path: src/evaluate_model.py
       md5: 41884b0bc124e93183066efbddf9fab3
       size: 1850
     outs:
     - path: som_assets/som_metrics/metrics.json
-      md5: 9632fd7d85d5a643d98196a6a441da64
-      size: 80
+      md5: 5458a57b1e1761a61a1dec2826d597a5
+      size: 81
