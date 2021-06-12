@@ -52,8 +52,8 @@ with open(str(Params.metrics / 'metrics.json'), 'w') as outfile:
     json.dump(
         dict(zip(['Accuracy', 'Average Accuracy', 'Precision', 'Recall'],
                  [
-                     round(acc, 3), round(ave_acc, 3), round(prec, 3),
-                     round(rec, 3)
+                     round(acc, 2), round(ave_acc, 2), round(prec, 2),
+                     round(rec, 2)
                  ])), outfile
     )
 
