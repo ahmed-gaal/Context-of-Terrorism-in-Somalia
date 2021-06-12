@@ -51,7 +51,10 @@ ave_acc = np.mean(res)
 with open(str(Params.metrics / 'metrics.json'), 'w') as outfile:
     json.dump(
         dict(zip(['Accuracy', 'Average Accuracy', 'Precision', 'Recall'],
-        [round(acc, 3), round(ave_acc, 3), round(prec, 3), round(rec, 3)])), outfile
+                 [
+                     round(acc, 3), round(ave_acc, 3), round(prec, 3),
+                     round(rec, 3)
+                 ])), outfile
     )
 
 # Store confusion matrix in a csv file.
