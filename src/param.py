@@ -3,8 +3,9 @@ Data Pipeline Configuration Script.
 """
 from pathlib import Path
 
+
 class Params:
-    random_state=42,
+    random_state = 42,
     assets_path = Path('./som_assets')
     original = assets_path / 'som_original' / 'data.xlsx'
     data = assets_path / 'som_data'
