@@ -20,7 +20,10 @@ def feature_extraction(dframe):
     """
     Utility function to extract features from dataset.
     """
-    cols = ['criteria_3', 'target_type']
+    cols = ['year', 'month', 'day', 'extended', 'specificity', 'vicinity',
+            'criteria_1', 'criteria_2', 'criteria_3', 'multiple', 'success',
+            'suicide', 'attack_type', 'target_type', 'guncertain1',
+            'weapon_type', 'property','hostage_kidnap']
     diff = dframe.loc[:, cols]
     scale = StandardScaler()
 
