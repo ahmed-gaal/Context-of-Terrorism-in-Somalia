@@ -13,7 +13,7 @@ Params.features.mkdir(parents=True, exist_ok=True)
 train_df = pd.read_csv(str(Params.data / 'train.csv'))
 test_df = pd.read_csv(str(Params.data / 'test.csv'))
 
-# Create function to extract and preprocess features.
+# Create function to extract and pre-process features.
 
 
 def feature_extraction(dframe):
@@ -21,14 +21,12 @@ def feature_extraction(dframe):
     Utility function to extract features from dataset.
     """
     cols = ['criteria_3', 'target_type']
-    deff = dframe.loc[:, cols]
+    diff = dframe.loc[:, cols]
     scale = StandardScaler()
 
     stand = pd.DataFrame(
-        scale.fit_transform(deff), columns=cols
+        scale.fit_transform(diff), columns=cols
     )
-
-
     return stand
 
 
