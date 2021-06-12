@@ -1,0 +1,30 @@
+stages:
+  data exploration:
+    cmd: python src/extract_data.py
+    deps:
+    - src/extract_data.py
+    outs:
+    - som_assets/som_data
+  feature engineering:
+    cmd: python src/extract_features.py
+    deps:
+    - som_assets/som_data
+    - src/extract_features.py
+    outs:
+    - som_assets/som_features
+  model training:
+    cmd: python src/train_model.py
+    deps:
+    - som_assets/som_features
+    - src/train_model.py
+    outs:
+    - som_assets/som_models
+  model evaluation:
+    cmd: python src/evaluate_model.py
+    deps:
+    - som_assets/som_features
+    - som_assets/som_models
+    - src/evaluate_model.py
+    metrics:
+    - som_assets/som_metrics/metrics.json:
+        cache: false
