@@ -4,7 +4,7 @@ Script to train model on preprocessed data.
 # Import necessary libraries.
 import joblib
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 from param import Params
 
 # Create file path to store model artifacts from training script.
@@ -15,7 +15,7 @@ X_train = pd.read_csv(str(Params.features / 'train_features.csv'))
 y_train = pd.read_csv(str(Params.features / 'train_target.csv'))
 
 # Instantiate classifier
-model = RandomForestClassifier()
+model = DecisionTreeClassifier()
 
 # Fit classifier to train data
 model.fit(X_train, y_train.to_numpy().ravel())
