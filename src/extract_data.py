@@ -4,11 +4,11 @@ Script to extract data from remote storage.
 # Import necessary libraries and dependecies
 import os
 import gdown
+import utils
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from param import Params
-import utils
 
 # Generate random number
 np.random.seed(42)
