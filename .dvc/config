@@ -1,2 +1,5 @@
 [core]
     analytics = false
+    remote = somali-warfare
+['remote "somali-warfare"']
+    url = gdrive://1e1dIH6U4AbaVyI0fE60quuJ7XDOywPWx
