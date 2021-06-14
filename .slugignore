@@ -5,3 +5,23 @@
 *.pdf
 /test
 /spec
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.pyre/
+.vscode
+.DS_Store
+.idea
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
