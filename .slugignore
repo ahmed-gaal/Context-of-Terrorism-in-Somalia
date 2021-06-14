@@ -25,3 +25,6 @@ ipython_config.py
 
 # pyenv
 .python-version
+./problem1_metrics.csv
+./dvc.yaml
+./dvc.lock
