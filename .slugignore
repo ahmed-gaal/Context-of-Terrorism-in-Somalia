@@ -1,0 +1,7 @@
+./src
+./som_assets
+./.dvc
+*.psd
+*.pdf
+/test
+/spec
