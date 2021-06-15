@@ -20,10 +20,7 @@ def feature_extraction(dframe):
     """
     Utility function to extract features from dataset.
     """
-    cols = ['year', 'month', 'day', 'extended', 'specificity', 'vicinity',
-            'criteria_1', 'criteria_2', 'doubt_terrorism', 'multiple', 'success',
-            'suicide', 'attack_type', 'target_type', 'guncertain1',
-            'weapon_type', 'property','hostage_kidnap']
+    cols = ['target_type', 'criteria_3']
     diff = dframe.loc[:, cols]
     scale = StandardScaler()
 
@@ -38,8 +35,8 @@ test_features = feature_extraction(test_df)
 
 # Extract Target from dataset
 
-train_target = train_df.loc[:, 'criteria_3']
-test_target = test_df.loc[:, 'criteria_3']
+train_target = train_df.loc[:, 'doubt_terrorism']
+test_target = test_df.loc[:, 'doubt_terrorism']
 
 # Save our preprocessed data to our features file path
 train_features.to_csv(str(Params.features / 'train_features.csv'), index=None)
