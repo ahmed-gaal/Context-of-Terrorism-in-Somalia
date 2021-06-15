@@ -41,12 +41,14 @@ color_scale = ['#E22126', '#669278', '#16161A', '#C74D4F', '#161729',
 # Design layout of dashboard
 layout = html.Div([
     html.Hr(),
-    dbc.Row(
-        dbc.Col(
-            html.P('Consequences and Casualties of Terrorism in Somalia', style={
-                'font-family': 'Overpass, sans-serif', 'font-weight': 'bold',
-                'font-variant': 'small-caps', 'font-size': '200%'
-            }), width={'size': 6, 'offset': 4}), className='row'),
+    dbc.Container([
+        dbc.Row(
+            dbc.Col(
+                html.P('Consequences and Casualties of Terrorism in Somalia', style={
+                    'font-family': 'Overpass, sans-serif', 'font-weight': 'bold',
+                    'font-variant': 'small-caps', 'font-size': '200%'
+                }), width={'size': 6, 'offset': 4}), className='row'),
+    ]),
     html.Hr(),
     dbc.Row([
         dbc.Col(
@@ -143,14 +145,16 @@ layout = html.Div([
         )
     ]),
     html.Hr(),
-    dbc.Row(
-        dbc.Col(
-            html.P('Distribution of Weapons and Attacks Employed by\
-                Perpetrators',
-            style={
-                'font-family': 'Overpass, sans-serif', 'font-weight': 'bold',
-                'font-variant': 'small-caps', 'font-size': '200%'
-            }), width={'size': 6, 'offset': 4}), className='row'),
+    dbc.Container([
+        dbc.Row(
+            dbc.Col(
+                html.P('Distribution of Weapons and Attacks Employed by\
+                    Perpetrators',
+                style={
+                    'font-family': 'Overpass, sans-serif', 'font-weight': 'bold',
+                    'font-variant': 'small-caps', 'font-size': '200%'
+                }), width={'size': 6, 'offset': 4}), className='row'),
+    ]),
     html.Hr(),
     dbc.Row([
         dbc.Col(
@@ -216,13 +220,15 @@ layout = html.Div([
         )
     ], className='row'),
     html.Hr(),
-    dbc.Row(
-        dbc.Col(
-            html.P('Precise Locations of Attacks on Topographical Depiction',
-            style={
-                'font-family': 'Overpass, sans-serif', 'font-weight': 'bold',
-                'font-variant': 'small-caps', 'font-size': '200%'
-            }), width={'size': 6, 'offset': 4}), className='row'),
+    dbc.Container([
+        dbc.Row(
+            dbc.Col(
+                html.P('Precise Locations of Attacks on Topographical Depiction',
+                style={
+                    'font-family': 'Overpass, sans-serif', 'font-weight': 'bold',
+                    'font-variant': 'small-caps', 'font-size': '200%'
+                }), width={'size': 6, 'offset': 4}), className='row'),
+    ]),
     html.Hr(),
     dbc.Row([
         dbc.Col(
