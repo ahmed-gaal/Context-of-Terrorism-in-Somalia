@@ -34,12 +34,12 @@ stages:
       size: 189782
       nfiles: 4
     - path: src/train_model.py
-      md5: 9841431cc8cf8b9361e08ee413490900
-      size: 704
+      md5: 20e15d2af24ab4937af0d04b0a0885fd
+      size: 710
     outs:
     - path: som_assets/som_models
-      md5: 75888ecb24b63a1a66d73081152c83e4.dir
-      size: 3857
+      md5: c860914384f869076a60f55a8347fe19.dir
+      size: 1388707
       nfiles: 1
   model evaluation:
     cmd: python src/evaluate_model.py
@@ -49,8 +49,8 @@ stages:
       size: 189782
       nfiles: 4
     - path: som_assets/som_models
-      md5: 75888ecb24b63a1a66d73081152c83e4.dir
-      size: 3857
+      md5: c860914384f869076a60f55a8347fe19.dir
+      size: 1388707
       nfiles: 1
     - path: src/evaluate_model.py
       md5: 3344da1046c3ecaca930c820ba06649a
