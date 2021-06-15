@@ -10,3 +10,6 @@
     Terrorism of the University of Maryland.
 
 You can find the complete dataset [here](https://drive.google.com/uc?id=182QuypWQDczgbSoObr9FxnVF6BcTrLTD)
+You can also find the visualizations of the dataset in the
+interactive web application [here](https://somali-warfare.herokuapp.com/)
+
