@@ -9,6 +9,7 @@ import seaborn as sb
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.metrics import confusion_matrix, plot_confusion_matrix
+from sklearn.metrics import precision_score, recall_score, f1_score
 from sklearn.model_selection import GridSearchCV
 
 
@@ -132,7 +133,13 @@ def model_selection(est, scale, X, y, label, truth):
     
     # Computing accuracy score.
     acc = accuracy_score(truth, pred)
-    print("Accuracy Score {:.4f}".format(acc))
+    pre = precision_score(truth, pred)
+    rec = recall_score(truth, pred)
+    f1 = f1_score(truth, pred)
+    print("Accuracy Score: {:2f}".format(acc))
+    print("Precision Score: {:.2f}".format(pre))
+    print("Recall Score: {:.2f}".format(rec))
+    print("F1 Score: {:.2f}".format(f1))
     
     # Printing out classification report.
     print('Classification Report \n {} \n'.format(classification_report(
@@ -153,7 +160,6 @@ def model_selection(est, scale, X, y, label, truth):
     plot_confusion_matrix(pipe, label, truth)
     
     return con
-    return acc
     pass
 
 
