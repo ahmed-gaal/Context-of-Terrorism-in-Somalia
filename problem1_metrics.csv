@@ -1,8 +1,0 @@
-Revision          Path                                 Accuracy    Average Accuracy    Precision    Recall
-workspace         som_assets/som_metrics/metrics.json  0.984       0.98                0.997        0.958
-Adaboost          som_assets/som_metrics/metrics.json  0.979       0.979               1.0          0.94
-Random-Forest     som_assets/som_metrics/metrics.json  0.979       0.975               1.0          0.94
-gradientBoosting  som_assets/som_metrics/metrics.json  0.984       0.98                0.997        0.958
-svm               som_assets/som_metrics/metrics.json  0.976       0.977               1.0          0.934
-tree              som_assets/som_metrics/metrics.json  0.979       0.979               1.0          0.94
-xgboost           som_assets/som_metrics/metrics.json  0.973       0.971               0.984        0.94
